@@ -10,7 +10,14 @@ public class TestStatistics {
 
         double average = findAverage(testScores);
         double highScore = findHighScore(testScores);
-        double findLowScore(testScores);
+        double lowScore = findLowScore(testScores);
+
+        System.out.printf("""
+                Given the array %d[],
+                Average: %d
+                High Score: %d
+                Low Score: %d
+                """, Arrays.toString(testScores), average, highScore, lowScore);
 
     }
 
@@ -33,6 +40,16 @@ public class TestStatistics {
         Arrays.sort(scoresOrdered);
 
         return scoresOrdered[scoresOrdered.length - 1];
+
+    }
+
+    public static double findLowScore(double[] scores) {
+
+        double[] scoresOrdered = new double[scores.length];
+        System.arraycopy(scores, 0, scoresOrdered, 0, scores.length);
+        Arrays.sort(scoresOrdered);
+
+        return scoresOrdered[0];
 
     }
 
