@@ -11,12 +11,13 @@ public class TestStatistics {
         double average = findAverage(testScores);
         double highScore = findHighScore(testScores);
         double lowScore = findLowScore(testScores);
+        double median = findMedian(testScores);
 
         System.out.printf("""
-                Given the array %d[],
-                Average: %d
-                High Score: %d
-                Low Score: %d
+                Given the array %s:
+                Average: %.2f
+                High Score: %.2f
+                Low Score: %.2f
                 """, Arrays.toString(testScores), average, highScore, lowScore);
 
     }
@@ -26,7 +27,7 @@ public class TestStatistics {
         int i;
         double sum = 0;
         for (double score: scores) {
-            sum += scores;
+            sum += score;
         }
 
         return sum / scores.length;
