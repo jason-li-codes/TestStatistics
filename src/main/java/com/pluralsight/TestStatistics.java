@@ -18,13 +18,13 @@ public class TestStatistics {
                 Average: %.2f
                 High Score: %.2f
                 Low Score: %.2f
-                """, Arrays.toString(testScores), average, highScore, lowScore);
+                Median: %.2f
+                """, Arrays.toString(testScores), average, highScore, lowScore, median);
 
     }
 
     public static double findAverage(double[] scores) {
 
-        int i;
         double sum = 0;
         for (double score: scores) {
             sum += score;
@@ -51,6 +51,21 @@ public class TestStatistics {
         Arrays.sort(scoresOrdered);
 
         return scoresOrdered[0];
+
+    }
+
+    public static double findMedian(double[] scores) {
+
+        double[] scoresOrdered = new double[scores.length];
+        System.arraycopy(scores, 0, scoresOrdered, 0, scores.length);
+        Arrays.sort(scoresOrdered);
+
+        if (scoresOrdered.length % 2 == 0) {
+            return (scoresOrdered[scoresOrdered.length / 2] + scoresOrdered[(scoresOrdered.length / 2) - 1]) / 2;
+        }
+        else {
+            return (scoresOrdered[scoresOrdered.length / 2]);
+        }
 
     }
 
