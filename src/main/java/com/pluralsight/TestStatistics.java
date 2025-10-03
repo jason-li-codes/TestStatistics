@@ -8,18 +8,25 @@ public class TestStatistics {
 
         double[] testScores = {88, 92, 75, 100, 64, 81, 56, 90, 78, 85};
 
+        double[] testScoresOrdered = new double[testScores.length];
+        System.arraycopy(testScores, 0, testScoresOrdered, 0, testScores.length);
+        Arrays.sort(testScoresOrdered);
+
         double average = findAverage(testScores);
-        double highScore = findHighScore(testScores);
-        double lowScore = findLowScore(testScores);
-        double median = findMedian(testScores);
+        double highScore = findHighScore(testScoresOrdered);
+        double lowScore = findLowScore(testScoresOrdered);
+        double median = findMedian(testScoresOrdered);
 
         System.out.printf("""
-                Given the array %s:
+                Given the test scores %s:
+                Ordered lowest to highest: %s
                 Average: %.2f
                 High Score: %.2f
                 Low Score: %.2f
                 Median: %.2f
-                """, Arrays.toString(testScores), average, highScore, lowScore, median);
+                """, Arrays.toString(testScores),
+                Arrays.toString(testScoresOrdered),
+                average, highScore, lowScore, median);
 
     }
 
@@ -36,35 +43,23 @@ public class TestStatistics {
 
     public static double findHighScore(double[] scores) {
 
-        double[] scoresOrdered = new double[scores.length];
-        System.arraycopy(scores, 0, scoresOrdered, 0, scores.length);
-        Arrays.sort(scoresOrdered);
-
-        return scoresOrdered[scoresOrdered.length - 1];
+        return scores[scores.length - 1];
 
     }
 
     public static double findLowScore(double[] scores) {
 
-        double[] scoresOrdered = new double[scores.length];
-        System.arraycopy(scores, 0, scoresOrdered, 0, scores.length);
-        Arrays.sort(scoresOrdered);
-
-        return scoresOrdered[0];
+        return scores[0];
 
     }
 
     public static double findMedian(double[] scores) {
 
-        double[] scoresOrdered = new double[scores.length];
-        System.arraycopy(scores, 0, scoresOrdered, 0, scores.length);
-        Arrays.sort(scoresOrdered);
-
-        if (scoresOrdered.length % 2 == 0) {
-            return (scoresOrdered[scoresOrdered.length / 2] + scoresOrdered[(scoresOrdered.length / 2) - 1]) / 2;
+        if (scores.length % 2 == 0) {
+            return (scores[scores.length / 2] + scores[(scores.length / 2) - 1]) / 2;
         }
         else {
-            return (scoresOrdered[scoresOrdered.length / 2]);
+            return (scores[scores.length / 2]);
         }
 
     }
