@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.util.Arrays;
+
 public class TestStatistics {
 
     public static void main(String[] args) {
@@ -7,7 +9,7 @@ public class TestStatistics {
         double[] testScores = {88, 92, 75, 100, 64, 81, 56, 90, 78, 85};
 
         double average = findAverage(testScores);
-        double findHighScore(testScores);
+        double highScore = findHighScore(testScores);
         double findLowScore(testScores);
 
     }
@@ -21,6 +23,16 @@ public class TestStatistics {
         }
 
         return sum / scores.length;
+
+    }
+
+    public static double findHighScore(double[] scores) {
+
+        double[] scoresOrdered = new double[scores.length];
+        System.arraycopy(scores, 0, scoresOrdered, 0, scores.length);
+        Arrays.sort(scoresOrdered);
+
+        return scoresOrdered[scoresOrdered.length - 1];
 
     }
 
